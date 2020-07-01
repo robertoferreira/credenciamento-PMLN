@@ -1,0 +1,13 @@
+.text-badge{
+    font-size: 1.4em;
+}
+
+.link-person:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+    color: black !important;
+}
+
+.bg-light-2{
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
