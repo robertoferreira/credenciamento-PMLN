@@ -17,7 +17,7 @@ class CreateCertificatesTable extends Migration
             $table->bigIncrements('id');
             $table->uuid('uuid');
             $table->unsignedBigInteger('company_id');
-            $table->timestamps('expired_at');
+            $table->timestamp('expired_at');
             $table->string('main_activity');
             $table->string('secondary_activity');
             $table->timestamps();
