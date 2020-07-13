@@ -111,6 +111,7 @@
                                 <!-- FIM DADOS DO DONO -->
 
                                 <hr>
+
                                 <div class="col-12 bg-light p-2 mb-1 rounded">
                                     <a class="btn btn-lg btn-success" href="{{ url('storage/' . $company->docs) }}" target="_blank"><i class="fas fa-file-download"></i> Baixar Arquivo</a>
                                 </div>

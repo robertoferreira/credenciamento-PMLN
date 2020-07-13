@@ -36,7 +36,7 @@
             </div>
             <!-- FIM MENSAGEM DE WARNING -->
 
-            
+
             @if(isset(Auth::user()->company->id))
                 <h3>Bem vindo! <b>{{ auth()->user()->company()->first()->name_business }}</b></h3>
             @else
@@ -188,10 +188,10 @@
                         <h5 class="text-muted"><i class="fas fa-user"></i> Atividade(s) da Empresa</h5>
                         <hr>
                             <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">CNAI:<span class="text-danger">*</span> </label>
+                                <label for="" class="col-sm-2 col-form-label">Documentos:<span class="text-danger">*</span> </label>
                                 <div class="col-sm-10">
 
-                                    <a class="btn btn-lg btn-success" href="{{ url('storage/' . $company->cnai) }}" target="_blank"><i class="fas fa-file-download"></i> Baixar Arquivo</a>
+                                    <a class="btn btn-lg btn-success" href="{{ url('storage/' . $company->docs) }}" target="_blank"><i class="fas fa-file-download"></i> Baixar Arquivo</a>
                                     <hr>
                                     <!-- fim div  <textarea class="form-control" id="" placeholder="Ex.: 95.11-8-00 - Reparação e manutenção de computadores e de equipamentos periféricos" rows="10"></textarea>-->
                                     <p class="text-muted">Caso queira substituir o arquivo existente é só enviar um novo arquivo.</p>
