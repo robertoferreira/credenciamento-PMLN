@@ -13,7 +13,10 @@ use Auth;
 
 class CertificateController extends Controller
 {
-
+    /**
+     * Teste de git php
+     *
+     */
     public function certificate($uuid)
     {
         $certificate = Certificate::where('uuid', $uuid)->first();
