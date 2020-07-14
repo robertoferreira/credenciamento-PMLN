@@ -39,7 +39,7 @@ class FormHomeRequest extends FormRequest
             'email'                   => 'required',
             'password'                => 'required',
             'phone_business'          => 'required',
-            'docs'                    => 'required|file|mimes:pdf,zip|max:10240',
+            'docs'                    => 'required|file|mimes:pdf,zip|max:200000',
         ];
     }
 
