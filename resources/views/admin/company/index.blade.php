@@ -192,6 +192,8 @@
                                 <div class="col-sm-10">
 
                                     <a class="btn btn-lg btn-success" href="{{ url('storage/' . $company->docs) }}" target="_blank"><i class="fas fa-file-download"></i> Baixar Arquivo</a>
+                                    <a class="btn btn-lg btn-danger" href="{{ Storage::url($company->docs) }}" target="_blank"><i class="fas fa-file-download"></i> Baixar Arquivo</a>
+
                                     <hr>
                                     <!-- fim div  <textarea class="form-control" id="" placeholder="Ex.: 95.11-8-00 - Reparação e manutenção de computadores e de equipamentos periféricos" rows="10"></textarea>-->
                                     <p class="text-muted">Caso queira substituir o arquivo existente é só enviar um novo arquivo.</p>
