@@ -34,7 +34,7 @@ class CompanyController extends Controller
             $userLoginCompany = true;
         }
 
-        
+
 
         //** PEGA TODAS AS TOMADAS DE PREÇOS */
         $outletPrices = OutletPrice::where('status', 'ativo')->orderBy('created_at', 'desc')->get();
@@ -71,7 +71,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-       
+
         $company = Company::where('id', $id)->first();
 
         $certificates = Certificate::orderBy('created_at', 'desc')->where('company_id', $id)->get();
@@ -131,14 +131,26 @@ class CompanyController extends Controller
         $company->phone_business = $request->phone_business;
         $company->status = $request->status;
 
+
+        if($request->file('docs') != null){
+            if(file_exists(url('storage/' . $company->docs))){
+                unlink('storage/' . $company->docs);
+                $docs = $request->file('docs')->store('docs');
+            }else{
+                $docs = $request->file('docs')->store('docs');
+            }
+
+
+            //$docs = $request->file('docs')->store('docs');
+        }
+
+
+        //dd($request->docs_old);
+
         if($request->file('docs') == null){
             $docs = $request->docs_old;
         }
 
-        if($request->file('docs') != null){
-            unlink('storage/' . $company->docs);
-            $docs = $request->file('docs')->store('docs');
-        }
 
         $company->docs = $docs;
 
