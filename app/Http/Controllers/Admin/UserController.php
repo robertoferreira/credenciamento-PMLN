@@ -50,7 +50,7 @@ class UserController extends Controller
      */
     public function store(FormUserCreateRequest $request)
     {
-        
+
         $user = new User();
         $user->uuid = Str::uuid();
         $user->name = $request->name;
@@ -122,7 +122,7 @@ class UserController extends Controller
         $user = User::find($uuid);
 
         $company = Company::find($user->company->id);
-        unlink('storage/' . $company->cnai);
+        unlink('storage/' . $company->docs);
 
         $user->delete();
 
