@@ -122,14 +122,11 @@ class UserController extends Controller
         $user = User::find($uuid);
 
         $company = Company::find($user->company->id);
-        unlink('storage/' . $company->docs);
-
 
         if(file_exists(url('storage/' . $company->docs))){
             unlink('storage/' . $company->docs);
 
         }
-
 
         $user->delete();
 
