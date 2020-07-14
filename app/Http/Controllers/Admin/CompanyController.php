@@ -147,9 +147,9 @@ class CompanyController extends Controller
 
         //dd($request->docs_old);
 
-        if($request->file('docs') == null){
-            $docs = $request->docs_old;
-        }
+//        if($request->file('docs') == null){
+//            $docs = $request->docs_old;
+//        }
 
 
         $company->docs = $docs;

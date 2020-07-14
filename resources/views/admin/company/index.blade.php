@@ -185,7 +185,7 @@
 
 
                     <div class="col-12 bg-light mb-5 p-5 rounded">
-                        <h5 class="text-muted"><i class="fas fa-user"></i> Atividade(s) da Empresa</h5>
+                        <h5 class="text-muted"><i class="fas fa-user"></i> Documentos da Empresa</h5>
                         <hr>
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Documentos:<span class="text-danger">*</span> </label>
