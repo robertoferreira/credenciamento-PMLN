@@ -31,7 +31,8 @@ class newUserRegistered extends Mailable
      */
     public function build()
     {
-        $this->subject("Novo cadastro {$this->user->company->name_business}");
+        $this->subject("Novo cadastro - {$this->user->company->name_business}");
+        $this->cc('roberto@housecriative.com.br');
         $this->to($this->user->email, $this->user->name);
 
         return $this->markdown('mail.user-registered', [

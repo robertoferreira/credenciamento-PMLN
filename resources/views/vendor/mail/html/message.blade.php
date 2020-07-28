@@ -2,7 +2,7 @@
 {{-- Header --}}
 @slot('header')
 @component('mail::header', ['url' => config('app.url')])
-![PMLN]({{ asset('_assets/img/logo-prefeitura-de-lagoa-nova.png') }})
+## {{ config('app.name') }}
 @endcomponent
 @endslot
 
