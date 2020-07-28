@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Mail\newUserMail;
+use App\Mail\newUserRegistered;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\User;
 use App\Http\Requests\FormHomeRequest;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class SiteController extends Controller
@@ -75,7 +78,10 @@ class SiteController extends Controller
 
         $company->save();
 
-        
+        //Mail::to(env('MAIL_FROM_ADDRESS'))->send(new newUserMail($user));
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new newUserRegistered($user));
+
+
         return redirect()->route('site.home')->withInput()->with('success', 'Cadastro realizado com sucesso!');
         //dd($request->all());
     }

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\newUserMail;
 use Illuminate\Http\Request;
 use App\Http\Requests\FormUserCreateRequest;
 use App\Http\Requests\FormUserUpdateRequest;
 
 use App\User;
 use App\Models\Company;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -50,6 +52,7 @@ class UserController extends Controller
      */
     public function store(FormUserCreateRequest $request)
     {
+        dd($request->all());
 
         $user = new User();
         $user->uuid = Str::uuid();
@@ -64,7 +67,9 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('usuario.index')->withInput()->with('success', 'usuário cadastro realizado com sucesso!');
+        Mail::to('robertocnovos@gmail.com')->send(new newUserMail($user));
+
+        return redirect()->route('company.index')->withInput()->with('success', 'usuário cadastro realizado com sucesso!');
     }
 
     /**

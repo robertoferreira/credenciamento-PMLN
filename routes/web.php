@@ -10,11 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('envio-email', function (){
+//    $user = stdClass();
+//    $user->name = 'Roberto';
+//    $user->email = 'roberto@housecriative.com.br';
+//    return new \App\Mail\newUserMail($user);
+//});
+
 Route::group(['namespace' => 'Site'], function () {
     Route::get('/', 'SiteController@index')->name('site.home');
     Route::post('/store', 'SiteController@store')->name('site.store');
 });
-    
+
 
 Route::group(['namespace' => 'Admin', 'name' => 'admin.', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('company', 'CompanyController');
@@ -24,8 +31,8 @@ Route::group(['namespace' => 'Admin', 'name' => 'admin.', 'prefix' => 'admin', '
     Route::get('company-certificado/{uuid}', 'CertificateController@certificate')->name('company.certificate.final');
     Route::get('company-certificado', 'CertificateController@index')->name('company.certificate.index');
     Route::post('company-certificado/store', 'CertificateController@store')->name('company.certificate.store');
-    
-    
+
+
     /** USUÁRIOS DO SISTEMA */
     Route::get('/usuario', 'UserController@index')->name('usuario.index');
     Route::get('usuario/create', 'UserController@create')->name('usuario.create');
