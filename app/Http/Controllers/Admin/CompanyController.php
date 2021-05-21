@@ -19,27 +19,20 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $userLoginCompany = null;
-
-
-        /** PEGA USUÁRIOS */
-        $userLoginCompany = Auth::user()->company['status'];
-        $userLoginlevel = Auth::user()->level;
-
-        if($userLoginCompany != 'Ativa'){
-            $userLoginCompany = false;
-        }
-
-        if($userLoginlevel == 1 || $userLoginlevel == 3){
-            $userLoginCompany = true;
-        }
-
-
-
         //** PEGA TODAS AS TOMADAS DE PREÇOS */
         $outletPrices = OutletPrice::where('status', 'ativo')->orderBy('created_at', 'desc')->get();
 
-        return view('admin.index', compact('outletPrices', 'userLoginCompany'));
+        if(Auth::user()->level == 0){
+            $company = Company::where('id', Auth::user()->company->id)->first();
+            return view('admin.index', compact('outletPrices', 'company'));
+        }
+
+        if(Auth::user()->level == 3){
+            $company = Company::all();
+            return view('admin.index-admin', compact('outletPrices'));
+        }     
+
+    
     }
 
     /**

@@ -71,7 +71,7 @@
                     <div class="m-5 p-5 bg-light">
 
 
-                        @if($company->status == 'Ativa')
+                        
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
@@ -115,13 +115,7 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        @else
-                            <div class="alert alert-danger">
-                                Existem pendências no seu cadastro, para ver as <b>Tomadas de Preços</b> em vigor favor 
-                                entrar em contato com a Prefeitura de Lagoa Nova através do e-mail <b>cpl@lagoanova.rn.gov.br</b>
-                                ou pelo telefone: <b>(84) 3431-2102</b>.
-                            </div>
-                        @endif
+                        
                     </div>
 
                 </div>

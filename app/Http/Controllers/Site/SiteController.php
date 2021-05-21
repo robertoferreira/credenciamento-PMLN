@@ -60,6 +60,7 @@ class SiteController extends Controller
         $company->provider = $request->provider;
         $company->document = $request->document;
         $company->name_business = $request->name_business;
+        $company->share_capital = $request->share_capital;
         $company->zipcode = $request->zipcode;
         $company->address = $request->address;
         $company->number_address = $request->number_address;

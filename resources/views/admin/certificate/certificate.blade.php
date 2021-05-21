@@ -104,7 +104,7 @@
 
                         <div class="col-md-6">
                             <p class="text-left">
-                            Este registro é válido de <b>{{ $certificate->created_at  }}</b> até <b>{{ $certificate->expired_at }}</b>
+                                Este registro é válido de <b>{{ $certificate->created_at  }}</b> até <b>{{ $certificate->expired_at }}</b>
                             </p>
                         </div>
                     </div>

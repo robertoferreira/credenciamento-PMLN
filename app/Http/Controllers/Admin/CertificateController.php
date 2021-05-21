@@ -25,7 +25,7 @@ class CertificateController extends Controller
 
         $mainActivity = json_decode($certificate->main_activity);
         $secondaryActivity = json_decode($certificate->secondary_activity);
-        return view('admin.certificate.certificate', compact('certificate', 'finaDate', 'mainActivity', 'secondaryActivity'));
+        return view('admin.certificate.certificate', compact('certificate', 'mainActivity', 'secondaryActivity'));
     }
 
 
