@@ -33,6 +33,16 @@
         </main>
     </div>
 
+    <footer class="border-top">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-center">{{ date('Y') }} © Prefeitura de Lagoa Nova/RN | Desenvolvido por: <a href="https://housecriative.com.br" target="_blank"> <i class="fas fa-heart text-red"></i> House Criative</a> </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
