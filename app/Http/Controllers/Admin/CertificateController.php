@@ -25,7 +25,8 @@ class CertificateController extends Controller
 
         $mainActivity = json_decode($certificate->main_activity);
         $secondaryActivity = json_decode($certificate->secondary_activity);
-        return view('admin.certificate.certificate', compact('certificate', 'mainActivity', 'secondaryActivity'));
+        $share_capital = json_decode($certificate->share_capital);
+        return view('admin.certificate.certificate', compact('certificate', 'mainActivity', 'secondaryActivity', 'share_capital'));
     }
 
 
@@ -36,7 +37,7 @@ class CertificateController extends Controller
      */
     public function index()
     {
-        $idCompany = Auth::user()->company->id;
+        $idCompany = auth()->user()->company->id;
 
         $certificates = Certificate::orderBy('created_at', 'desc')->where('company_id', $idCompany)->get();
 
@@ -47,16 +48,6 @@ class CertificateController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -64,7 +55,7 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->company_id);
+
         $certificate = new Certificate();
         $certificate->uuid = Str::uuid();
         $certificate->company_id = $request->company_id;
@@ -96,6 +87,7 @@ class CertificateController extends Controller
 
         $certificate->main_activity = json_encode($dataRF['atividade_principal']);
         $certificate->secondary_activity = json_encode($dataRF['atividades_secundarias']);
+        $certificate->share_capital = json_encode($dataRF['capital_social']);
 
 
         /** finaliza dados da receita */
@@ -107,48 +99,5 @@ class CertificateController extends Controller
         //dd($certificate->uuid);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

@@ -78,6 +78,10 @@
                             <b>CNPJ:</b> {{ $certificate->company->document }}
                         </p>
 
+                        <p class="">
+                            <b>Capital Social:</b> R$ {{ number_format($share_capital,2, ',', '.') }}
+                        </p>
+
                         <p class="main_active">
                             <b>Atividade Principal:</b>
                             @foreach($mainActivity as $m)

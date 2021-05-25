@@ -55,21 +55,26 @@
             @endif
 
                 <hr>
-                <h2 class="text-center mb-2">Lista de Certificados da Empresa</h2>
-                
+                <h2 class="text-center mb-5 mt-5">Lista de Certificados da Empresa</h2>
+
+               
                 @if(count($certificates) > 0)
                 
-                    @if(strtotime($lastCertificate->expired_at) < strtotime(now()))
+                    @if(date('Y-m-d', strtotime(now())) > date('Y-m-d', strtotime($lastCertificate->expired_at)))
+
                         @if(Auth::user()->company->status != 'Pendente')
-                            <div class="text-center my-5">
-                                <div class="col-12">
-                                    <form action="{{ route('company.certificate.store') }}" method="post" class="my-5">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="company_id" value="{{ Auth::user()->company->id }}">
-                                        <button type="submit" class="btn btn-success btn-lg btn-block"><i class="fas fa-file-pdf"></i> Emitir Novo Certificado</button>
-                                    </form>
+
+                                <div class="text-center my-5">
+                                    <div class="col-4 offset-4">
+                                        <form action="{{ route('company.certificate.store') }}" method="post" class="my-5">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="company_id" value="{{ Auth::user()->company->id }}">
+                                            <button type="submit" class="btn btn-success btn-lg btn-block"><i class="fas fa-file-pdf"></i> Emitir Novo Certificado</button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
+
+
                         @else
                             <div class="alert alert-danger">
                                 Não é possível emitir certificado, sua empresa está com a documentação pendente!
@@ -85,8 +90,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Chave</th>
-                            <th scope="col">Data da Validade</th>
                             <th scope="col">Emitido Em:</th>
+                            <th scope="col">Data da Validade</th>
                             <th scope="col">Visualizar</th>
                         </tr>
                     </thead>
@@ -95,11 +100,10 @@
                         <tr>
                             <th scope="row">{{ $certificate->id }}</th>
                             <td>{{ $certificate->uuid }}</td>
-                            <td>{{ $certificate->expired_at }} </td>
-                            <td>{{ $certificate->created_at }} </td>
+                            <td>{{ date('d/m/Y', strtotime($certificate->created_at)) }} </td>
+                            <td>{{ date('d/m/Y', strtotime($certificate->expired_at)) }} </td>
                             <td>
                                 <a href="{{ route('company.certificate.final', $certificate->uuid ) }}" class="btn btn-success" target="window"><i class="fas fa-eye"></i> Ver Certificado</a>
-
                             </td>
                         </tr>
                     @endforeach
@@ -110,16 +114,19 @@
 
                 @else
                     @if(Auth::user()->company->status != 'Pendente')
-                        <div class="col-12">
+                        
+                        <div class="col-4 offset-4">
+
                             <form action="{{ route('company.certificate.store') }}" method="post" class="my-5">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="company_id" value="{{ Auth::user()->company->id }}">
-                                <button type="submit" class="btn btn-success btn-lg btn-block">Emitir 1º Certificado</button>
+                                <button type="submit" class="btn btn-success btn-lg btn-block">Emitir Certificado</button>
                             </form>
                         </div>
-                    @else'
-                        <div class="alert alert-danger">
-                            Não é possível emitir certificado, sua empresa está com a documentação pendente!
+                        
+                    @else
+                        <div class="alert alert-danger mt-5 mb-5">
+                            Não é possível emitir certificado, sua empresa está com a documentação pendente! Entre em contato com a CPL pelo e-mail <b>cpl@lagoanova.rn.gov.br</b>.
                         </div>
                     @endif
                 @endif

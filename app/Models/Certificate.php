@@ -12,15 +12,6 @@ class Certificate extends Model
 
     protected $dateCreatedAt = ['created_at'];
 
-    public function getExpiredAtAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
-
-    public function getCreatedAtAttribute($dateCreatedAt)
-    {
-        return Carbon::parse($dateCreatedAt)->format('d/m/Y');
-    }
 
     public function company()
     {
