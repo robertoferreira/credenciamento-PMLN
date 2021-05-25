@@ -52,8 +52,8 @@
                 <div class="container">
                     <div class="col-md-12">
                         @if(isset(Auth::user()->company->observation))
-                            <div class="alert alert-warning">
-                                {{ Auth::user()->company->observation }}
+                            <div class="alert alert-danger">
+                                <b><i class="fas fa-exclamation-circle"></i> Alerta:</b> {{ Auth::user()->company->observation }}
                             </div>
                         @endif
                     </div>
