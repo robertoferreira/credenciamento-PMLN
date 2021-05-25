@@ -53,6 +53,32 @@ class SiteController extends Controller
         $user->level = 0;
         $user->status = 'ativo';
         $user->save();
+        
+
+        /** pega dos da empresa na RECEITA FEDERAL */
+        $cnpj = str_replace('.', '', str_replace('/', '', str_replace('-', '', $request->document)));
+
+        //dd($request->document);
+
+        /** inica dados da receita */
+        $starCurl = curl_init();
+
+        //create curl resource
+        curl_setopt($starCurl, CURLOPT_URL, "https://www.receitaws.com.br/v1/cnpj/{$cnpj}");
+
+        //return the transfer as a string
+        curl_setopt($starCurl, CURLOPT_RETURNTRANSFER, 1);
+
+        // $getData contains the output string
+        $getData = curl_exec($starCurl);
+
+        // close curl resource to free up system resources
+        curl_close($starCurl);
+
+        $dataRF = json_decode($getData, true);
+
+        /** pega dos da empresa na RECEITA FEDERAL */
+
 
         $company = new Company();
         $company->type = 'physical_business';
@@ -60,7 +86,7 @@ class SiteController extends Controller
         $company->provider = $request->provider;
         $company->document = $request->document;
         $company->name_business = $request->name_business;
-        $company->share_capital = $request->share_capital;
+        $company->share_capital = str_replace('"', '', json_encode($dataRF['capital_social']));
         $company->zipcode = $request->zipcode;
         $company->address = $request->address;
         $company->number_address = $request->number_address;
@@ -77,14 +103,13 @@ class SiteController extends Controller
 
         $company->docs = $cnai;
 
+        
         $company->save();
 
         //Mail::to(env('MAIL_FROM_ADDRESS'))->send(new newUserMail($user));
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new newUserRegistered($user));
 
-
         return redirect()->route('site.home')->withInput()->with('success', 'Cadastro realizado com sucesso!');
-        //dd($request->all());
     }
 
     /**

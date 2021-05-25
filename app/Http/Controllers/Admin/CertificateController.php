@@ -82,9 +82,6 @@ class CertificateController extends Controller
 
         $dataRF = json_decode($getData, true);
 
-        //var_dump(array($dataRF['atividade_principal']));
-        //die;
-
         $certificate->main_activity = json_encode($dataRF['atividade_principal']);
         $certificate->secondary_activity = json_encode($dataRF['atividades_secundarias']);
         $certificate->share_capital = json_encode($dataRF['capital_social']);
