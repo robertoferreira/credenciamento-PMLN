@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Admin\OutletPrice;
 use App\Http\Controllers\Controller;
 use App\Mail\newUserMail;
 use App\Mail\newUserRegistered;
@@ -21,7 +22,10 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return view('site.index');
+        //** PEGA TODAS AS TOMADAS DE PREÇOS */
+        $outletPrices = OutletPrice::where('status', 'Em Andamento')->orderBy('created_at', 'desc')->get();
+
+        return view('site.index', compact('outletPrices'));
     }
 
     /**
@@ -31,7 +35,7 @@ class SiteController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.create');
     }
 
     /**

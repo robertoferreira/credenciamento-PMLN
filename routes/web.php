@@ -19,6 +19,7 @@
 
 Route::group(['namespace' => 'Site'], function () {
     Route::get('/', 'SiteController@index')->name('site.home');
+    Route::get('/cadatrar', 'SiteController@create')->name('site.create');
     Route::post('/store', 'SiteController@store')->name('site.store');
 });
 

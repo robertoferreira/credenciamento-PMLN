@@ -23,25 +23,6 @@
     </div>
     <!-- FIM HEADER -->
 
-
-    <!-- INFO USABILIDADE -->
-    <div class="container">
-        <div class="row my-3">
-            <div class="col-12">
-                <h3>Sistema Cadastramento de Fornecedor</h3>
-                <hr>
-                <p>PARA EFETIVAR O CADASTRO ou RENOVAÇAO, SIGA OS PASSOS ABAIXO:</p>
-                <ul>
-                    <li> 1 - Coloque seus dados para iniciar o processo de Credenciamento Digital - Licitações </li>
-                    <li> 2 - Enviar toda documentação através do Portal Digital disponibilizado em formato PDF.</li>
-                    <li> 3 - Para novos cadastro ou Renovações, o processo poderá ser concluído no máximo <b>24 Horas</b>.</li>
-                    <li> 4 - As credenciais do Sistema serão enviadas por e-mail e o acesso é via WEB.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- INFO USABILIDADE -->
-
     @yield('content')
 
     <footer class="bg-light">
