@@ -76,10 +76,10 @@
                             <thead>
                                 <tr>
                                     <th>Status</th>
-                                    <th>Título</th>
-                                    <th>Data</th>
-                                    <th>Válido até</th>
                                     <th>Objeto</th>
+                                    <th>Abertura</th>
+                                    <th>Encerrametno</th>
+                                    <th>Download</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,16 +87,18 @@
                                 @if(count($outletPrices) > 0)
                                 <tr>
                                     <td>
-                                        @if(!empty($outletPrice->status == 'ativo'))
-                                            <span class="badge badge-success">Ativo</span>
+                                        @if(!empty($outletPrice->status == 'Em Andamento'))
+                                            <span class="badge badge-success">Em Andamento</span>
                                         @else
-                                            <span class="badge badge-danger">Inativo</span>
+                                            <span class="badge badge-danger">Encerrado</span>
                                         @endif
                                     </td>
-                                    <td><a href="{{ route('outletprice.show', $outletPrice->uuid) }}"> {{ $outletPrice->title }} </a></td>
-                                    <td>{{ date( 'd/m/Y' , strtotime($outletPrice->published)) }}</td>
-                                    <td>{{ date( 'd/m/Y' , strtotime($outletPrice->open)) }}</td>
                                     <td>{{ $outletPrice->object }}</td>
+                                    <td>{{ date( 'd/m/Y' , strtotime($outletPrice->published)) }}</td>
+                                    <td>{{ date( 'd/m/Y' , strtotime($outletPrice->closing)) }}</td>
+                                    <td>
+                                        <a href="{{ url('storage', $outletPrice->docs ) }}" class="btn btn-info float-left mr-2"><i class="fas fa-cloud-download-alt"></i></a>
+                                    </td>
 
                                 </tr>
                                 @endif
@@ -107,10 +109,10 @@
                             <tfoot>
                                 <tr>
                                     <th>Status</th>
-                                    <th>Título</th>
-                                    <th>Data</th>
-                                    <th>Válido até</th>
                                     <th>Objeto</th>
+                                    <th>Abertura</th>
+                                    <th>Encerrametno</th>
+                                    <th>Download</th>
 
                                 </tr>
                             </tfoot>

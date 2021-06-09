@@ -20,7 +20,7 @@ class CompanyController extends Controller
     public function index()
     {
         //** PEGA TODAS AS TOMADAS DE PREÇOS */
-        $outletPrices = OutletPrice::where('status', 'ativo')->orderBy('created_at', 'desc')->get();
+        $outletPrices = OutletPrice::where('status', 'Em Andamento')->orderBy('created_at', 'desc')->get();
 
         if(Auth::user()->level == 0){
             $company = Company::where('id', Auth::user()->company->id)->first();
@@ -35,26 +35,6 @@ class CompanyController extends Controller
     
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-    }
 
     /**
      * Display the specified resource.

@@ -49,9 +49,9 @@
                         <thead>
                             <tr>
                                 <th>Status</th>
-                                <th>Título</th>
-                                <th>Publicado</th>
-                                <th>Número/Ano</th>
+                                <th>Objeto</th>
+                                <th>Abertura</th>
+                                <th>Encerramento</th>
                                 <th>Ação</th>
 
                             </tr>
@@ -69,8 +69,9 @@
                                     </td>
                                     <td>{{ $outletPrice->object }}</td>
                                     <td>{{ date( 'd/m/Y' , strtotime($outletPrice->published)) }}</td>
-                                    <td>{{ $outletPrice->number }}</td>
+                                    <td>{{ date( 'd/m/Y' , strtotime($outletPrice->closing)) }}</td>
                                     <td>
+                                        <a href="{{ url('storage', $outletPrice->docs ) }}" class="btn btn-info float-left mr-2"><i class="fas fa-cloud-download-alt"></i></a>
                                         <a href="{{ route('outletprice.edit', $outletPrice->id ) }}" class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i></a>
                                         <form method="post" action="{{ route('outletprice.delete', $outletPrice->id ) }}" class="float-left">
                                         {{ csrf_field() }}
@@ -84,9 +85,9 @@
                         <tfoot>
                             <tr>
                                 <th>Status</th>
-                                <th>Título</th>
-                                <th>Publicado</th>
-                                <th>Número/Ano</th>
+                                <th>Objeto</th>
+                                <th>Abertura</th>
+                                <th>Encerramento</th>
                                 <th>Ação</th>
 
                             </tr>
