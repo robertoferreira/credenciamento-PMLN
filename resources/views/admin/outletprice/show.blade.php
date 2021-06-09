@@ -36,7 +36,7 @@
                     
                     
                         <div class="row">
-                            <p class="h3"><b>Título:</b> {{ $outletPrice->title }}</p>
+                            <p class="h3"><b>Objeto:</b> {{ $outletPrice->object }}</p>
                         </div>
 
                         <hr>
@@ -51,17 +51,12 @@
 
                         <hr>
                         <div class="row">
-                            <p class="h3"><b>Abertura em:</b> {{ date('d/m/Y', strtotime($outletPrice->open)) }}</p>
+                            <p class="h3"><b>Encerra em:</b> {{ date('d/m/Y', strtotime($outletPrice->closing)) }}</p>
                         </div>
 
                         <hr>
                         <div class="row">
-                            <p class="h3"><b>Objeto:</b> {{ $outletPrice->object }}</p>
-                        </div>
-
-                        <hr>
-                        <div class="row">
-                            <p class="h3"><b>Status:</b> <span class="badge badge-{{ ($outletPrice->status == 'ativo' ? 'success' : 'danger') }}"> {{ $outletPrice->status }}</span></p>
+                            <p class="h3"><b>Status:</b> <span class="badge badge-{{ ($outletPrice->status == 'Em Andamento' ? 'success' : 'danger') }}"> {{ $outletPrice->status }}</span></p>
                         </div>
 
                         <hr>

@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class OutletPrices extends Model
 {
     protected $fillable = [
-        'uuid', 'title', 'number', 'published', 'open',
-        'object', 'docs', 'status'
+        'uuid', 'object', 'number', 'published', 'closing',
+        'docs', 'status'
     ];
     
 }

@@ -16,11 +16,10 @@ class CreateOutletPricesTable extends Migration
         Schema::create('outlet_prices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid');
-            $table->string('title');
+            $table->text('object');
             $table->string('number');
             $table->string('published');
-            $table->string('open');
-            $table->text('object');
+            $table->string('closing');
             $table->string('docs');
             $table->string('status');
             $table->timestamps();

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\FormOutletPriceRequest;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class OutletPriceController extends Controller
 {
@@ -61,11 +61,10 @@ class OutletPriceController extends Controller
 
             $outletPrice = new OutletPrice();
             $outletPrice->uuid = Str::uuid();
-            $outletPrice->title = filter_var($request->title, FILTER_SANITIZE_STRING);
+            $outletPrice->object = filter_var($request->object, FILTER_SANITIZE_STRING);
             $outletPrice->number = filter_var($request->number, FILTER_SANITIZE_STRING);
             $outletPrice->published = filter_var($request->published, FILTER_SANITIZE_STRING);
-            $outletPrice->open = filter_var($request->open, FILTER_SANITIZE_STRING);
-            $outletPrice->object = filter_var($request->object, FILTER_SANITIZE_STRING);
+            $outletPrice->closing = filter_var($request->closing, FILTER_SANITIZE_STRING);
             $outletPrice->status = filter_var($request->status, FILTER_SANITIZE_STRING);
 
             if($request->file('docs')){
@@ -121,11 +120,10 @@ class OutletPriceController extends Controller
 
             $outletPrice = OutletPrice::find($id);
 
-            $outletPrice->title = $request->title;
+            $outletPrice->object = $request->object;
             $outletPrice->number = $request->number;
             $outletPrice->published = $request->published;
-            $outletPrice->open = $request->open;
-            $outletPrice->object = $request->object;
+            $outletPrice->closing = $request->closing;
             $outletPrice->status = $request->status;
 
             if($request->file('docs') == null){

@@ -36,10 +36,10 @@
                     <form method="POST" action="{{ route('outletprice.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Título</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Objeto</label>
                             <div class="col-sm-10">
-                                <input type="text" name="title" class="form-control @error('title') is-invalid @enderror">
-                                @error('title')
+                                <input type="text" name="object" class="form-control @error('object') is-invalid @enderror">
+                                @error('object')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -72,22 +72,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Abertura em:</label>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Encerramento em:</label>
                             <div class="col-sm-10">
-                                <input type="date" name="open" class="form-control @error('open') is-invalid @enderror">
-                                @error('open')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Objeto</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="object" class="form-control @error('object') is-invalid @enderror">
-                                @error('object')
+                                <input type="date" name="closing" class="form-control @error('closing') is-invalid @enderror">
+                                @error('closing')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -101,8 +89,8 @@
                             <div class="col-sm-10">
                                 <select class="form-control @error('status') is-invalid @enderror" name="status" id="exampleFormControlSelect1">
                                     <option value="">Selecione um status</option>
-                                    <option value="ativo">Ativo</option>
-                                    <option value="inativo">Inativo</option>
+                                    <option value="Em Andamento">Em Andamento</option>
+                                    <option value="Encerrado">Encerrado</option>
                                 </select>
                                 @error('status')
                                     <span class="invalid-feedback" role="alert">

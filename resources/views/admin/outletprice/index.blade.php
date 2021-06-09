@@ -11,7 +11,7 @@
                 <!-- FIM HEADER -->
             </div>
         </div>
-        <div class="col-lg-12">
+        <div class="col-12">
             <!-- INFO USABILIDADE -->
 
             <!-- MENU -->
@@ -44,7 +44,7 @@
                 <hr>
                 <h2 class="text-center">Tomada de Preços Cadastradas</b></h2>
 
-                <div class="m-5 p-5 bg-light">
+                <div class="col-12 m-5 p-5 bg-light">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
@@ -61,21 +61,21 @@
                                 <tr>
                                 
                                     <td>
-                                    @if($outletPrice->status == 'ativo')
-                                        <span class="badge badge-success">Ativo</span>
-                                    @else
-                                        <span class="badge badge-danger">Inativo</span>
-                                    @endif
+                                        @if($outletPrice->status == 'Em Andamento')
+                                            <span class="badge badge-success">Em Andamento</span>
+                                        @else
+                                            <span class="badge badge-danger">Encerrado</span>
+                                        @endif
                                     </td>
-                                    <td>{{ $outletPrice->title }}</td>
+                                    <td>{{ $outletPrice->object }}</td>
                                     <td>{{ date( 'd/m/Y' , strtotime($outletPrice->published)) }}</td>
                                     <td>{{ $outletPrice->number }}</td>
                                     <td>
-                                        <a href="{{ route('outletprice.edit', $outletPrice->id ) }}" class="btn btn-info float-left mr-2"><i class="fas fa-edit"></i> Editar</a>
+                                        <a href="{{ route('outletprice.edit', $outletPrice->id ) }}" class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i></a>
                                         <form method="post" action="{{ route('outletprice.delete', $outletPrice->id ) }}" class="float-left">
                                         {{ csrf_field() }}
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> Excluir</button>
+                                        <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>    
                                 </tr>
