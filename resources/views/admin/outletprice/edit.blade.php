@@ -105,7 +105,7 @@
                         <label for="" class="col-sm-2 col-form-label">Documentos:<span class="text-danger">*</span> </label>
                         <div class="col-sm-10">
                             <div class="py-2">
-                                <a href="{{ url('storage', $outletPrice->docs) }}" class="btn btn-success btn-lg">
+                                <a href="{{ Storage::disk('s3')->url($outletPrice->docs) }}" class="btn btn-success btn-lg" target="_blank">
                                     <i class="fas fa-cloud-download-alt fa-2x"></i> Baixe o arquivo
                                 </a>
                             </div>

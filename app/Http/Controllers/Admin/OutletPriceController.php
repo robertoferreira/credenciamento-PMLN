@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\FormOutletPriceRequest;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class OutletPriceController extends Controller
 {
@@ -68,7 +69,7 @@ class OutletPriceController extends Controller
             $outletPrice->status = filter_var($request->status, FILTER_SANITIZE_STRING);
 
             if($request->file('docs')){
-                $docs = $request->file('docs')->store('docs');
+                $docs = $request->file('docs')->store('credenciamento/docs');
             }
 
             $outletPrice->docs = $docs;
@@ -131,8 +132,8 @@ class OutletPriceController extends Controller
             }
 
             if($request->file('docs') != null){
-                unlink('storage/' . $outletPrice->docs);
-                $docs = $request->file('docs')->store('docs');
+                Storage::disk('s3')->delete($outletPrice->docs);
+                $docs = $request->file('docs')->store('credenciamento/docs');
             }
 
             $outletPrice->docs = $docs;
@@ -157,6 +158,7 @@ class OutletPriceController extends Controller
         if(Auth::user()->level >= 1){
 
             $outletPrice = OutletPrice::find($id);
+            Storage::delete($outletPrice->docs);
             $outletPrice->delete();
 
             return redirect()->route('outletprice.index')->withInput()->with('success', 'Tomda de Preço deletada com sucesso!');

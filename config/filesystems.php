@@ -65,6 +65,12 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
+        'cache' => [
+            'store' => 'memcached',
+            'expire' => 600,
+            'prefix' => 'credenciamento-pmln',
+        ],
+
     ],
 
 ];
