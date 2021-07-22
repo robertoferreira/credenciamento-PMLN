@@ -15,14 +15,15 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'uuid'                  =>  Str::uuid(),
-            'name'                  =>  'Roberto Ferreira',
-            'email'                 =>  'roberto@housecriative.com.br',
-            'password'              =>  bcrypt('2032Mkyjwb@#'),
+            'name'                  =>  'Flavio Cardoso',
+            'email'                 =>  'cpl@lagoanova.rn.gov.br',
+            'password'              =>  bcrypt('2019Lagoa@#'),
             'phone_person'          => null,
             'document_person_owner' =>  null,
             'birthday'              =>  null,
             'level'                 =>  3,
             'status'                =>  'ativo'
         ]);
+        
     }
 }
