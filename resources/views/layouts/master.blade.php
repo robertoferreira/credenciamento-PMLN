@@ -14,7 +14,16 @@
   </head>
   <body>
       <!-- HEADER -->
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row bg-light mb-2">
+            <div class="col-lg-3 col-12 offset-lg-9">
+                <div class="py-2">
+                    <a href="{{ url('login') }}" class="btn btn-primary btn-sm float-right">Fazer Login</a>
+                    <p class=" float-right mr-3">Já tenho cadastro</p>
+                    
+                </div>
+            </div>
+        </div>
         <div class="row my-3">
             <div class="col-12 text-center">
                 <img src="{{ asset('_assets/img/logo-prefeitura-de-lagoa-nova.png') }}" alt="Prefeitura de Lagoa Nova" class="img-fluid">
