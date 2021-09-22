@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Admin\OutletPrice;
 use App\User;
 use App\Models\Certificate;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -105,24 +106,12 @@ class CompanyController extends Controller
         $company->status = $request->status;
 
 
-        if($request->file('docs') != null){
-            if(file_exists(url('storage/' . $company->docs))){
-                unlink('storage/' . $company->docs);
-                $docs = $request->file('docs')->store('docs');
-            }else{
+        if($request->file('docs')){
+            if($company->docs != null){
+                Storage::disk('s3')->delete($company->docs);
                 $docs = $request->file('docs')->store('docs');
             }
-
-
-            //$docs = $request->file('docs')->store('docs');
         }
-
-
-        //dd($request->docs_old);
-
-//        if($request->file('docs') == null){
-//            $docs = $request->docs_old;
-//        }
 
 
         $company->docs = $docs;

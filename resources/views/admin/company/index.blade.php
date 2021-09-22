@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label" data-toggle="atividade-receita-federal" data-placement="bottom" title="Situação de acordo com a Receita Federal.">Situação na RF:<span class="text-danger">*</span> <i class="fas fa-info-circle text-info"></i> </label>
+                                <label for="" class="col-sm-2 col-form-label" data-toggle="atividade-receita-federal" data-placement="bottom" title="Situação de status no sistema de Credenciamento da Prefeitura Municipal de Lagoa Nova/RN.">Status:<span class="text-danger">*</span> <i class="fas fa-info-circle text-info"></i> </label>
                                 <div class="col-sm-10">
                                     <h3><span class="badge badge-{{ ($company->status == 'Pendente' ? 'danger' : 'success') }}">{{ $company->status }}</span></h3>
                                     <input type="hidden" name="status" class="form-control" value="{{ $company->status }}">
@@ -191,8 +191,7 @@
                                 <label for="" class="col-sm-2 col-form-label">Documentos:<span class="text-danger">*</span> </label>
                                 <div class="col-sm-10">
 
-                                    <a class="btn btn-lg btn-success" href="{{ url('storage/' . $company->docs) }}" target="_blank"><i class="fas fa-file-download"></i> Baixar Arquivo</a>
-                                    <a class="btn btn-lg btn-danger" href="{{ Storage::url($company->docs) }}" target="_blank"><i class="fas fa-file-download"></i> Baixar Arquivo</a>
+                                    <a class="btn btn-lg btn-info" href="{{ Storage::url($company->docs) }}" target="_blank"><i class="fas fa-file-download"></i> Baixar Arquivo</a>
 
                                     <hr>
                                     <!-- fim div  <textarea class="form-control" id="" placeholder="Ex.: 95.11-8-00 - Reparação e manutenção de computadores e de equipamentos periféricos" rows="10"></textarea>-->

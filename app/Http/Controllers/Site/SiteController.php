@@ -56,7 +56,9 @@ class SiteController extends Controller
         $user->birthday = $request->birthday;
         $user->level = 0;
         $user->status = 'ativo';
+        /** Faz o cadastro do usuário no BD */
         $user->save();
+        
         
 
         /** pega dos da empresa na RECEITA FEDERAL */
@@ -83,6 +85,11 @@ class SiteController extends Controller
 
         /** pega dos da empresa na RECEITA FEDERAL */
 
+        /** Verifica se retornou algum erro da RECEITA FEDERAL */
+        if($dataRF['status'] === 'ERROR'){
+            return redirect()->back()->with('warning', $dataRF['message']);
+        }
+
 
         $company = new Company();
         $company->type = 'physical_business';
@@ -108,6 +115,8 @@ class SiteController extends Controller
         $company->docs = $cnai;
 
         
+
+        /** Faz o cadastro da empresa no BD */
         $company->save();
 
         //Mail::to(env('MAIL_FROM_ADDRESS'))->send(new newUserMail($user));
