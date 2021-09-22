@@ -110,6 +110,8 @@ class CompanyController extends Controller
             if($company->docs != null){
                 Storage::disk('s3')->delete($company->docs);
                 $docs = $request->file('docs')->store('docs');
+            }else{
+                $docs = $request->file('docs')->store('docs');
             }
         }
 
