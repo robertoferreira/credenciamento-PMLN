@@ -89,6 +89,7 @@
                             <div class="col-sm-10">
                                 <select class="form-control @error('status') is-invalid @enderror" name="status" id="exampleFormControlSelect1">
                                     <option value="">Selecione um status</option>
+                                    <option value="Recebimento de Envelope">Recebimento de Envelope</option>
                                     <option value="Em Andamento">Em Andamento</option>
                                     <option value="Encerrado">Encerrado</option>
                                 </select>
@@ -119,13 +120,13 @@
                                 <div class="text-right">
                                 <button type="submit" class="btn btn-lg btn-primary">Cadastrar</button>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </form>
 
                 </div>
-                
+
             </div>
             <!-- INFO USABILIDADE -->
         </div>
