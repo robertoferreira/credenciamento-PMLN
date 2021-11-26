@@ -23,7 +23,7 @@ class SiteController extends Controller
     public function index()
     {
         //** PEGA TODAS AS TOMADAS DE PREÇOS */
-        $outletPrices = OutletPrice::where('status', 'Em Andamento')->orderBy('created_at', 'desc')->get();
+        $outletPrices = OutletPrice::where('status', 'Recebimento de Envelope')->orderBy('created_at', 'desc')->get();
 
         return view('site.index', compact('outletPrices'));
     }
@@ -58,8 +58,8 @@ class SiteController extends Controller
         $user->status = 'ativo';
         /** Faz o cadastro do usuário no BD */
         $user->save();
-        
-        
+
+
 
         /** pega dos da empresa na RECEITA FEDERAL */
         $cnpj = str_replace('.', '', str_replace('/', '', str_replace('-', '', $request->document)));
@@ -114,7 +114,7 @@ class SiteController extends Controller
 
         $company->docs = $cnai;
 
-        
+
 
         /** Faz o cadastro da empresa no BD */
         $company->save();

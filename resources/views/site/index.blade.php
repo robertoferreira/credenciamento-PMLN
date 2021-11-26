@@ -34,11 +34,7 @@
                     @if(count($outletPrices) > 0)
                     <tr>
                         <td>
-                            @if(!empty($outletPrice->status == 'Em Andamento'))
-                                <span class="badge badge-success">Em Andamento</span>
-                            @else
-                                <span class="badge badge-danger">Encerrado</span>
-                            @endif
+                            <span class="badge badge-info">{{ $outletPrice->status }}</span>
                         </td>
                         <td>{{ $outletPrice->object }}</td>
                         <td>{{ date( 'd/m/Y' , strtotime($outletPrice->published)) }}</td>
