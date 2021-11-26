@@ -59,10 +59,12 @@
                         <tbody>
                             @foreach($outletPrices as $outletPrice)
                                 <tr>
-                                
+
                                     <td>
                                         @if($outletPrice->status == 'Em Andamento')
                                             <span class="badge badge-success">Em Andamento</span>
+                                        @elseif ($outletPrice->status == 'Recebimento de Envelope')
+                                            <span class="badge badge-info">Recebimento de Envelope</span>
                                         @else
                                             <span class="badge badge-danger">Encerrado</span>
                                         @endif
@@ -78,7 +80,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                         </form>
-                                    </td>    
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -93,10 +95,10 @@
                             </tr>
                         </tfoot>
                     </table>
-                    
+
                 </div>
-                
-                
+
+
             </div>
             <!-- INFO USABILIDADE -->
         </div>
