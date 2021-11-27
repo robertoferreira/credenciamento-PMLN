@@ -71,7 +71,7 @@
                     <div class="m-5 p-5 bg-light">
 
 
-                        
+
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
@@ -89,6 +89,8 @@
                                     <td>
                                         @if(!empty($outletPrice->status == 'Em Andamento'))
                                             <span class="badge badge-success">Em Andamento</span>
+                                        @elseif($outletPrice->status == 'Recebimento de Envelope')
+                                            <span class="badge badge-info">Recebimento de Envelope</span>
                                         @else
                                             <span class="badge badge-danger">Encerrado</span>
                                         @endif
@@ -97,7 +99,7 @@
                                     <td>{{ date( 'd/m/Y' , strtotime($outletPrice->published)) }}</td>
                                     <td>{{ date( 'd/m/Y' , strtotime($outletPrice->closing)) }}</td>
                                     <td>
-                                        <a href="{{ url('storage', $outletPrice->docs ) }}" class="btn btn-info float-left mr-2"><i class="fas fa-cloud-download-alt"></i></a>
+                                        <a href="{{ url('storage', $outletPrice->docs ) }}" class="btn btn-block btn-info float-left mr-2"><i class="fas fa-cloud-download-alt"></i></a>
                                     </td>
 
                                 </tr>
@@ -117,7 +119,7 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        
+
                     </div>
 
                 </div>

@@ -26,7 +26,7 @@ class UserController extends Controller
         $usersSuperAdmins = User::where('level', '>', 1)->get();
 
         /** Usuários administrativos do sistema */
-        $usersSystem = User::where('level', '=', 1)->get();
+        $usersSystem = User::where('level', '<', 1)->get();
 
         /** Usuários e Empresas do sistema */
         $users = User::where('level', '=', 0)->get();

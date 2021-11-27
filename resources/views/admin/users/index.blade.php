@@ -192,16 +192,13 @@
                                                         @if($userSystem->status == 'ativo')
                                                             <span class="badge badge-success">Ativo</span>
                                                         @else
-                                                        <span class="badge badge-danger">Inativo</span>
+                                                            <span class="badge badge-danger">Inativo</span>
                                                         @endif
                                                     </td>
                                                     <td>{{ $userSystem->name }}</td>
                                                     <td>{{ $userSystem->email }}</td>
                                                     <td>
-                                                        @if(!isset($userSystem->company->id))
-                                                            <a href="{{ route('usuario.edit', $userSystem->uuid) }}" class="btn btn-primary"><i class="far fa-edit"></i></a>
-                                                            <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                                        @endif
+                                                        <a href="{{ route('usuario.edit', $userSystem->uuid) }}" class="btn btn-primary"><i class="far fa-edit"></i> Editar</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

@@ -20,20 +20,26 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //** PEGA TODAS AS TOMADAS DE PREÇOS */
-        $outletPrices = OutletPrice::where('status', 'Em Andamento')->orderBy('created_at', 'desc')->get();
+        //** PEGA TODAS AS TOMADAS DE PREÇOS RECEBENDO ENVELOPE */
+        $outletPrices = OutletPrice::where('status', 'Recebimento de Envelope')->orderBy('created_at', 'desc')->get();
+
+        //** PEGA TODAS AS TOMADAS DE PREÇOS EM ANDAMENTO */
+        $outletPricesOpen = OutletPrice::where('status', 'Em Andamento')->orderBy('created_at', 'desc')->get();
+
+        //** PEGA TODAS AS TOMADAS DE PREÇOS ENCERRADO */
+        $outletPricesClosed = OutletPrice::where('status', 'Encerrado')->orderBy('created_at', 'desc')->get();
 
         if(Auth::user()->level == 0){
             $company = Company::where('id', Auth::user()->company->id)->first();
-            return view('admin.index', compact('outletPrices', 'company'));
+            return view('admin.index', compact('outletPrices', 'company', 'outletPricesOpen', 'outletPricesClosed'));
         }
 
         if(Auth::user()->level == 3){
             $company = Company::all();
-            return view('admin.index-admin', compact('outletPrices'));
-        }     
+            return view('admin.index-admin', compact('outletPrices', 'company', 'outletPricesOpen', 'outletPricesClosed'));
+        }
 
-    
+
     }
 
 
