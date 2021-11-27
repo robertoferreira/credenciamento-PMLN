@@ -30,8 +30,10 @@ class UserController extends Controller
 
         /** Usuários e Empresas do sistema */
         $users = User::where('level', '=', 0)->get();
-        $companies = Company::all();
-        return view('admin.users.index', compact('users', 'companies', 'usersSystem', 'usersSuperAdmins'));
+        $companiesActive = Company::where('status', 'Ativa')->get();
+        $companiesPending = Company::where('status', 'Pendente')->get();
+
+        return view('admin.users.index', compact('users', 'companiesActive', 'usersSystem', 'usersSuperAdmins', 'companiesPending'));
     }
 
     /**
