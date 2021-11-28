@@ -119,8 +119,8 @@ class SiteController extends Controller
         /** Faz o cadastro da empresa no BD */
         $company->save();
 
-        // //Mail::to(env('MAIL_FROM_ADDRESS'))->send(new newUserMail($user));
-        // Mail::to(env('MAIL_FROM_ADDRESS'))->send(new newUserRegistered($user));
+        //Mail::to(env('MAIL_ADMIN_FROM_ADDRESS'))->send(new newUserMail($user));
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new newUserRegistered($user));
 
         return redirect()->route('site.home')->withInput()->with('success', 'Cadastro realizado com sucesso!');
     }
