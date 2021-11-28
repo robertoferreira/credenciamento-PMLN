@@ -73,59 +73,8 @@
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active pb-5" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                                        @if ($companiesPending->count() > 0)
-                                            <div class="my-5">
-                                                <h4 class="text-danger">Cadastros com pendências ativas</h4>
-                                                <hr>
-                                                <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Nome</th>
-                                                            <th>Responsável</th>
-                                                            <th>Telefone</th>
-                                                            <th>Situação</th>
-                                                            <th>Ver</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach($companiesPending as $company)
-                                                            <tr>
-                                                                <td>{{ $company->name_business ?? 'Admin do sistema' }}</td>
-                                                                <td>{{ $company->user->name ?? '' }}</td>
-                                                                <td>
-                                                                    {{ $company->phone_business ?? '' }}
-                                                                </td>
-                                                                <td>
-                                                                    @if ($company != null)
-                                                                        <span class="badge badge-{{ ($company->status == 'Ativa' ? 'success' : 'danger') }}">{{ $company->status ?? '' }}</span>
-                                                                    @else
-                                                                        <span class="badge badge-info">Admin do sistema</span>
-                                                                    @endif
-                                                                    {{-- <span class="badge badge-{{ ($company->company->status == 'Ativa' ? 'success' : 'danger') }}">{{ $company->company->status ?? '' }}</span> --}}
-                                                                </td>
-                                                                <td>
-                                                                    @if ($company != null)
-                                                                        <a href="{{ route('company.show', $company->id) }}" class="btn btn-sm btn-warning"><i class="far fa-eye"></i></a>
-                                                                    @endif
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>Nome</th>
-                                                            <th>Responsável</th>
-                                                            <th>Telefone</th>
-                                                            <th>Situação</th>
-                                                            <th>Ver</th>
-                                                        </tr>
-                                                    </tfoot>
-                                                </table><!-- FIM TABLE -->
-                                            </div> <!-- fim div -->
-                                        @endif
-
                                         <div class="my-5">
-                                            <h4 class="text-success">Cadastros ativos</h4>
+                                            <h4 class="text-success">Empresas e Usuários Cadastros</h4>
                                             <hr>
                                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>

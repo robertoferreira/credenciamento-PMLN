@@ -56,7 +56,7 @@
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
-    
+
     <script>
         $(document).ready(function() {
             $('#example').DataTable({
@@ -79,8 +79,9 @@
                         "sLast": "Último"
                     },
                     "oAria": {
-                        "sSortAscending": ": Ordenar colunas de forma ascendente",
-                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                        "sSortDescending": ": Ordenar colunas de forma descendente",
+                        "sSortAscending": ": Ordenar colunas de forma ascendente"
+
                     },
                     "select": {
                         "rows": {
@@ -89,9 +90,10 @@
                             "1": "Selecionado 1 linha"
                         }
                     }
-                }
+                },
+                "ordering": false
             });
-                
+
         } );
     </script>
 
