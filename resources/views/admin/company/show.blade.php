@@ -151,6 +151,15 @@
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-certificate" role="tabpanel" aria-labelledby="v-pills-certificate-tab">
+
+                                @if(Auth::user()->level >= 2)
+                                <div class="row">
+                                    <div class="container mb-4">
+                                        <a href="{{ route('company.certificate.create', $company->id) }}" class="btn btn-success btn-lg float-right">Emitir certificado</a>
+                                    </div>
+                                </div>
+                                @endif
+
                                 <!-- TABELA DE CERTIFICADOS -->
                                 <table class="table table-striped">
                                     <thead>

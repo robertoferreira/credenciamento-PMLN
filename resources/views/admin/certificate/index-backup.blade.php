@@ -58,7 +58,32 @@
                 <h2 class="text-center mb-5 mt-5">Lista de Certificados da Empresa</h2>
 
                
-                @if(count($certificates) > 0)                
+                @if(count($certificates) > 0)
+                
+                    @if(date('Y-m-d', strtotime(now())) > date('Y-m-d', strtotime($lastCertificate->expired_at)))
+
+                        @if(Auth::user()->company->status != 'Pendente')
+
+                                <div class="text-center my-5">
+                                    <div class="col-4 offset-4">
+                                        <form action="{{ route('company.certificate.store') }}" method="post" class="my-5">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="company_id" value="{{ Auth::user()->company->id }}">
+                                            <button type="submit" class="btn btn-success btn-lg btn-block"><i class="fas fa-file-pdf"></i> Emitir Novo Certificado</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+                        @else
+                            <div class="alert alert-danger">
+                                Não é possível emitir certificado, sua empresa está com a documentação pendente!
+                            </div>
+                        @endif
+                    @endif
+
+                
+                
                     <!-- TABELA DE CERTIFICADOS -->
                     <table class="table table-striped">
                         <thead>
@@ -85,6 +110,24 @@
                         </tbody>
                     </table>
                     <!-- FIM TABELA DE CERTIFICADOS -->
+                
+                @else
+                    @if(Auth::user()->company->status != 'Pendente')
+                        
+                        <div class="col-4 offset-4">
+
+                            <form action="{{ route('company.certificate.store') }}" method="post" class="my-5">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="company_id" value="{{ Auth::user()->company->id }}">
+                                <button type="submit" class="btn btn-success btn-lg btn-block">Emitir Certificado</button>
+                            </form>
+                        </div>
+                        
+                    @else
+                        <div class="alert alert-danger mt-5 mb-5">
+                            Não é possível emitir certificado, sua empresa está com a documentação pendente! Entre em contato com a CPL pelo e-mail <b>cpl@lagoanova.rn.gov.br</b>.
+                        </div>
+                    @endif
                 @endif
 
             </div>

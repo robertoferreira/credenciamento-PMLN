@@ -19,7 +19,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('usuario.edit', Auth::user()->uuid ) }}">Editar meus Dados</a>
                 <a class="dropdown-item" href="{{ route('company.edit', Auth::user()->company->id ) }}">Editar Dados da Empresa</a>
-                <a class="dropdown-item" href="{{ route('company.certificate.index') }}">Certificados</a>
+                <a class="dropdown-item" href="{{ route('company.certificate.index') }}">Ver Certificados</a>
             </li>
             @endif
 

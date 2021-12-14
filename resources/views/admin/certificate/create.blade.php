@@ -55,36 +55,35 @@
             @endif
 
                 <hr>
-                <h2 class="text-center mb-5 mt-5">Lista de Certificados da Empresa</h2>
+                <h2 class="text-center mb-5 mt-5">Certificado da Empresa - <b>{{ $company->name_business }}</b></h2>
 
-               
-                @if(count($certificates) > 0)                
-                    <!-- TABELA DE CERTIFICADOS -->
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Chave</th>
-                                <th scope="col">Emitido Em:</th>
-                                <th scope="col">Data da Validade</th>
-                                <th scope="col">Visualizar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($certificates as $certificate)
-                            <tr>
-                                <th scope="row">{{ $certificate->id }}</th>
-                                <td>{{ $certificate->uuid }}</td>
-                                <td>{{ date('d/m/Y', strtotime($certificate->created_at)) }} </td>
-                                <td>{{ date('d/m/Y', strtotime($certificate->expired_at)) }} </td>
-                                <td>
-                                    <a href="{{ route('company.certificate.final', $certificate->uuid ) }}" class="btn btn-success" target="window"><i class="fas fa-eye"></i> Ver Certificado</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    <!-- FIM TABELA DE CERTIFICADOS -->
+                @if(Auth::user()->level >= 2)
+
+                    <div class="text-center my-5">
+                        <div class="col-4 offset-4">
+                            <form action="{{ route('company.certificate.store') }}" method="post" class="my-5">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label for="start_date">Data de Início</label>
+                                    <input type="date" name="start_date" class="form-control" id="start_date" aria-describedby="dateHelp">
+                                    <small id="dateHelp" class="form-text text-muted">Escolha uma data de íncio.</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label for="end_date">Data de Fim</label>
+                                    <input type="date" name="end_date" class="form-control" id="end_date" aria-describedby="dateHelp">
+                                    <small id="dateHelp" class="form-text text-muted">Escolha uma data de término.</small>
+                                    </div>
+
+                                <button type="submit" class="btn btn-success btn-lg btn-block"><i class="fas fa-file-pdf"></i> Emitir Novo Certificado</button>
+                            </form>
+                        </div>
+                    </div>
+
+                @else
+                    <div class="alert alert-danger">
+                        Não é possível emitir certificado, você não tem permissão para realizar esta ação!
+                    </div>
                 @endif
 
             </div>

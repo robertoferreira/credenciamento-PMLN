@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Certificate;
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -45,6 +46,18 @@ class CertificateController extends Controller
         $lastCertificate = Certificate::latest()->first();
 
         return view('admin.certificate.index', compact('certificates', 'lastCertificate'));
+    }
+
+    public function create(int $id)
+    {
+        $company = Company::where('id', $id)->first();
+
+        return view('admin.certificate.create', compact('company'));
+    }
+
+    public function storeCertificate(Request $request, $id)
+    {
+
     }
 
     /**
