@@ -57,7 +57,7 @@ class CertificateController extends Controller
 
     public function storeCertificate(Request $request, $id)
     {
-
+        $company = Company::where('id', $id)->first();
     }
 
     /**
