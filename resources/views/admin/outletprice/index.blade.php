@@ -73,7 +73,7 @@
                                     <td>{{ date( 'd/m/Y' , strtotime($outletPrice->published)) }}</td>
                                     <td>{{ date( 'd/m/Y' , strtotime($outletPrice->closing)) }}</td>
                                     <td>
-                                        <a href="{{ Storage::disk('s3')->url($outletPrice->docs ) }}" class="btn btn-info float-left mr-2"><i class="fas fa-cloud-download-alt"></i></a>
+                                        <a href="{{ Storage::disk('s3')->url($outletPrice->docs ) }}" target="_blank" class="btn btn-info float-left mr-2"><i class="fas fa-cloud-download-alt"></i></a>
                                         <a href="{{ route('outletprice.edit', $outletPrice->id ) }}" class="btn btn-success float-left mr-2"><i class="fas fa-edit"></i></a>
                                         <form method="post" action="{{ route('outletprice.delete', $outletPrice->id ) }}" class="float-left">
                                         {{ csrf_field() }}

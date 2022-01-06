@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class OutletPriceController extends Controller
 {
-    
+
 
 
     /**
@@ -31,7 +31,7 @@ class OutletPriceController extends Controller
         }
 
         return redirect()->route('company.index')->with('warning', 'Você não tem permissão para acessar esta página.');
-        
+
     }
 
     /**
@@ -128,7 +128,7 @@ class OutletPriceController extends Controller
             $outletPrice->status = $request->status;
 
             if($request->file('docs') == null){
-                $docs = $request->docs_old;
+                $docs = $outletPrice->docs;
             }
 
             if($request->file('docs') != null){
