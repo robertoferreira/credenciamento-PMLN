@@ -90,6 +90,7 @@
                         <div class="col-sm-10">
                             <select class="form-control @error('status') is-invalid @enderror" name="status" id="exampleFormControlSelect1">
                                 <option value="">Selecione um status</option>
+                                <option value="Recebimento de Envelope" {{ ($outletPrice->status == 'Recebimento de Envelope' ? 'selected' : '') }}>Recebimento de Envelope</option>
                                 <option value="Em Andamento" {{ ($outletPrice->status == 'Em Andamento' ? 'selected' : '') }}>Em Andamento</option>
                                 <option value="Encerrado" {{ ($outletPrice->status == 'Encerrado' ? 'selected' : '') }}>Encerrado</option>
                             </select>
@@ -126,13 +127,13 @@
                                 <div class="text-right">
                                 <button type="submit" class="btn btn-lg btn-primary">Atualizar</button>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </form>
 
                 </div>
-                
+
             </div>
             <!-- INFO USABILIDADE -->
         </div>
