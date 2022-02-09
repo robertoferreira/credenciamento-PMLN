@@ -33,6 +33,18 @@
                 </div>
                 <!-- FIM MENSAGEM DE SUCESSO -->
 
+                <!-- MENSAGEM DE error -->
+                <div class="container">
+                    <div class="col-md-12">
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{session('error')}}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <!-- FIM MENSAGEM DE error -->
+
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -190,8 +202,8 @@
                                                     <td>{{ $usersSuperAdmin->name }}</td>
                                                     <td>{{ $usersSuperAdmin->email }}</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary"><i class="far fa-edit"></i> Editar</a>
-                                                        <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</a>
+                                                        <a href="{{ route('usuario.edit', $usersSuperAdmin->uuid) }}" class="btn btn-primary"><i class="far fa-edit"></i> Editar</a>
+                                                        {{-- <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</a> --}}
                                                     </td>
                                                 </tr>
                                             @endforeach

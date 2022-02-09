@@ -10,6 +10,7 @@ use App\Http\Requests\FormUserUpdateRequest;
 
 use App\User;
 use App\Models\Company;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -110,15 +111,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $uuid)
     {
-        $updateUser = User::where('uuid', $uuid);
+        try{
 
-        if($request->password == null){
-            $updateUser->update($request->except(['password', '_token', '_method']));
-        }else{
-            $updateUser->update($request->all()->except(['_token', '_method']));
+            $updateUser = User::where('uuid', $uuid)->first();
+            $updateUser->name = filter_var($request->name, FILTER_SANITIZE_STRING);
+            $updateUser->status = filter_var($request->status, FILTER_SANITIZE_STRING);
+
+            if($request->password != null){
+                $updateUser->password = bcrypt($request->password);
+            }
+
+            $updateUser->save();
+
+            return redirect()->route('usuario.index')->withInput()->with('success', 'Usuário atualizado realizado com sucesso!');
+
+        }catch(\Exception $e){
+            Log::error('Erro ao tentar atualizar usuário. Menagem: ' . $e->getMessage());
+            return redirect()->route('usuario.index')->withInput()->with('error', 'Opsss! Algo aconteceu de errado! Entre em contato com o administrador do sistema.');
         }
 
-        return redirect()->route('usuario.index')->withInput()->with('success', 'Usuário atualizado realizado com sucesso!');
+
     }
 
     /**
@@ -130,19 +142,18 @@ class UserController extends Controller
     public function destroy($uuid)
     {
 
-        $user = User::find($uuid);
+        // $user = User::find($uuid);
 
-        $company = Company::find($user->company->id);
+        // $company = Company::find($user->company->id);
 
-        if(file_exists(url('storage/' . $company->docs))){
-            unlink('storage/' . $company->docs);
+        // if(file_exists(url('storage/' . $company->docs))){
+        //     unlink('storage/' . $company->docs);
 
-        }
+        // }
 
-        $user->delete();
+        // $user->delete();
 
 
-
-        return redirect()->route('usuario.index')->withInput()->with('success', 'Usuário deletado com sucesso!');
+        // return redirect()->route('usuario.index')->withInput()->with('success', 'Usuário deletado com sucesso!');
     }
 }
