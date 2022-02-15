@@ -63,6 +63,8 @@
                         <div class="col-4 offset-4">
                             <form action="{{ route('company.certificate.store') }}" method="post" class="my-5">
                                 {{ csrf_field() }}
+                                <input type="hidden" name="document" value="{{ $company->document }}">
+                                <input type="hidden" name="company_id" value="{{ $company->id }}">
                                 <div class="form-group">
                                     <label for="start_date">Data de Início</label>
                                     <input type="date" name="start_date" class="form-control" id="start_date" aria-describedby="dateHelp">

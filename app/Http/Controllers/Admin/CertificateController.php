@@ -72,11 +72,13 @@ class CertificateController extends Controller
         $certificate = new Certificate();
         $certificate->uuid = Str::uuid();
         $certificate->company_id = $request->company_id;
-        $certificate->expired_at =  date('Y-m-d H:i:s', strtotime('+12 months'));
+        $certificate->expired_at =  date('Y-m-d H:i:s', strtotime($request->end_date));
+        $certificate->start_date =  date('Y-m-d H:i:s', strtotime($request->start_date));
 
         /** pega dos da empresa */
-        $cnpj = str_replace('.', '', str_replace('/', '', str_replace('-', '', Auth::user()->company->document)));
 
+        $cnpj = str_replace('.', '', str_replace('/', '', str_replace('-', '', $request->document)));
+        //dd($cnpj);
 
         /** inica dados da receita */
         $starCurl = curl_init();
@@ -102,12 +104,14 @@ class CertificateController extends Controller
 
         /** finaliza dados da receita */
 
+        //dd($certificate);
+
         $certificate->save();
 
-        return redirect()->route('company.certificate.index')->with('success', 'Certificado emitido com sucesso!');
+        return redirect()->route('company.index')->with('success', 'Certificado emitido com sucesso!');
 
         //dd($certificate->uuid);
     }
 
-    
+
 }

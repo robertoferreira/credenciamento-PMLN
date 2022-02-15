@@ -29,11 +29,11 @@ Route::group(['namespace' => 'Admin', 'name' => 'admin.', 'prefix' => 'admin', '
     Route::post('company-observation/{id}/update', 'CompanyController@observationUpdate')->name('company.observation.update');
 
     /** CERTIFICADOS */
-    Route::post('company-certificado/store/{id}', 'CertificateController@storeCertificate')->name('company.certificate.store-certificate');
+    //Route::post('company-certificado/store/{id}', 'CertificateController@storeCertificate')->name('company.certificate.store-certificate');
     Route::get('company-certificado/create/{id}', 'CertificateController@create')->name('company.certificate.create');
     Route::get('company-certificado/{uuid}', 'CertificateController@certificate')->name('company.certificate.final');
-    Route::get('company-certificado', 'CertificateController@index')->name('company.certificate.index');
-    Route::post('company-certificado/store', 'CertificateController@store')->name('company.certificate.store');
+    Route::get('company-certificado/', 'CertificateController@index')->name('company.certificate.index');
+    Route::post('company-certificado/store/', 'CertificateController@store')->name('company.certificate.store');
 
 
     /** USUÁRIOS DO SISTEMA */
