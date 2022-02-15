@@ -23,7 +23,7 @@
         <div class="col-4"></div>
         <div class="col-4 text-center">
             <a href="#" onClick="window.print()" class="btn btn-success btn-lg btn-print"> Imprimir</a>
-            <a href="{{ route('company.certificate.index') }}" class="btn btn-info btn-lg btn-print"> Voltar</a>
+            <a href="{{ route('company.index') }}" class="btn btn-info btn-lg btn-print"> Voltar</a>
         </div>
         <div class="col-4"></div>
     </div>
