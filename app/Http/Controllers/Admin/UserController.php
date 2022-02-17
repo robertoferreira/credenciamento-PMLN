@@ -115,6 +115,7 @@ class UserController extends Controller
 
             $updateUser = User::where('uuid', $uuid)->first();
             $updateUser->name = filter_var($request->name, FILTER_SANITIZE_STRING);
+            $updateUser->email = filter_var($request->email, FILTER_SANITIZE_STRING);
             $updateUser->status = filter_var($request->status, FILTER_SANITIZE_STRING);
 
             if($request->password != null){
