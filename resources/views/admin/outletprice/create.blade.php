@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Objeto</label>
                             <div class="col-sm-10">
-                                <input type="text" name="object" class="form-control @error('object') is-invalid @enderror">
+                                <input type="text" name="object" value="{{ old('object') }}" class="form-control @error('object') is-invalid @enderror">
                                 @error('object')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Número/Ano</label>
                             <div class="col-sm-10">
-                                <input type="text" name="number" class="form-control @error('number') is-invalid @enderror">
+                                <input type="text" name="number" value="{{ old('number') }}" class="form-control @error('number') is-invalid @enderror">
                                 @error('number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Publicado em:</label>
                             <div class="col-sm-10">
-                                <input type="date" name="published" class="form-control @error('published') is-invalid @enderror">
+                                <input type="date" name="published" value="{{ old('published') }}" class="form-control @error('published') is-invalid @enderror">
                                 @error('published')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,7 +74,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Encerramento em:</label>
                             <div class="col-sm-10">
-                                <input type="date" name="closing" class="form-control @error('closing') is-invalid @enderror">
+                                <input type="date" name="closing" value="{{ old('closing') }}" class="form-control @error('closing') is-invalid @enderror">
                                 @error('closing')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -89,7 +89,7 @@
                             <div class="col-sm-10">
                                 <select class="form-control @error('status') is-invalid @enderror" name="status" id="exampleFormControlSelect1">
                                     <option value="">Selecione um status</option>
-                                    <option value="Recebimento de Envelope">Recebimento de Envelope</option>
+                                    <option value="Recebimento de Envelope" {{ (old('status') == "Recebimento de Envelope" ? 'selected' : '') }}>Recebimento de Envelope</option>
                                     <option value="Em Andamento">Em Andamento</option>
                                     <option value="Encerrado">Encerrado</option>
                                 </select>
@@ -104,7 +104,7 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Documentos:<span class="text-danger">*</span> </label>
                             <div class="col-sm-10">
-                                <input type="file" name="docs" id="" class="form-control @error('docs') is-invalid @enderror">
+                                <input type="file" name="docs" value="{{ old('docs') }}" id="" class="form-control @error('docs') is-invalid @enderror">
                                 <small id="emailHelp" class="form-text text-muted ">Envie um PDF ou ZIP.</small>
                                 @error('docs')
                                     <span class="invalid-feedback" role="alert">
