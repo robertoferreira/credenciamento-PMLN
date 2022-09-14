@@ -109,7 +109,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $uuid)
+    public function update(FormUserUpdateRequest $request, $uuid)
     {
         try{
 

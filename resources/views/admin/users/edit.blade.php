@@ -46,7 +46,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            
+
                         </div>
 
                         <div class="form-group row">
@@ -59,10 +59,10 @@
                                     </span>
                                 @enderror
                             </div>
-                            
+
                         </div>
 
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Status</label>
                             <div class="col-sm-10">
                                 <select class="form-control @error('status') is-invalid @enderror" name="status" id="exampleFormControlSelect1">
@@ -76,19 +76,21 @@
                                     </span>
                                 @enderror
                             </div>
-                            
-                        </div>
+
+                        </div> --}}
 
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Senha</label>
                             <div class="col-sm-10">
                                 <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="inputEmail3" placeholder="Use números e letras">
+                                <small id="emailHelp" class="form-text text-muted">Só insira algo se for trocar a senha.</small>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+
                         </div>
 
                         <div class="form-group row">
@@ -96,13 +98,13 @@
                                 <div class="text-right">
                                 <button type="submit" class="btn btn-lg btn-primary">Atualizar</button>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </form>
 
                 </div>
-                
+
             </div>
             <!-- INFO USABILIDADE -->
         </div>

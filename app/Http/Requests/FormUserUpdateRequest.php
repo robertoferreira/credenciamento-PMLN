@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class FormUserUpdateRequest extends FormRequest
 {
@@ -23,10 +24,12 @@ class FormUserUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        //dd($this->uuid);
+
         return [
             'name' => 'required|min:5|max:50',
-            'email' => "required|email",
-            'status' => 'required',
+            'email' => 'required|email|max:255|unique:users,email,' . $this->uuid . ',uuid',
+            //'status' => 'required',
         ];
     }
 
