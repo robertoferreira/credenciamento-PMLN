@@ -113,7 +113,7 @@
                                 <hr>
 
                                 <div class="col-12 bg-light p-2 mb-1 rounded">
-                                    <a class="btn btn-lg btn-success" href="{{ Storage::disk('s3')->download($company->docs) }}">
+                                    <a class="btn btn-lg btn-success" href="{{ Storage::disk('s3')->url($company->docs) }}">
                                         <i class="fas fa-file-download"></i> Baixar Arquivo
                                     </a>
                                 </div>
