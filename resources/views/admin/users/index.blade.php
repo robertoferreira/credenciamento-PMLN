@@ -116,7 +116,7 @@
                                                             </td>
                                                             <td>
                                                                 @if ($company != null)
-                                                                    <a href="{{ route('company.show', $company->id) }}" class="btn btn-sm btn-warning"><i class="far fa-eye"></i></a>
+                                                                    <a href="{{ route('company.show', $company->id) }}" class="btn btn-sm btn-info text-white"><i class="far fa-eye"></i></a>
                                                                 @endif
                                                             </td>
                                                         </tr>

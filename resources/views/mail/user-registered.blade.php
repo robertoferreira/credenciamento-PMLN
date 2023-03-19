@@ -1,5 +1,5 @@
 @component('mail::message')
-Obriado por se cadastrar **{{$company->name_business}}**. Favor acesse a plataforma para verificar se o seu cadastro.
+Obrigado por se cadastrar **{{$company->name_business}}**. Favor acesse a plataforma para verificar se o seu cadastro.
 
 @component('mail::button', ['url' => 'https://credenciamento.lagoanova.rn.gov.br/admin/company'])
 Acessar a Plataforma
